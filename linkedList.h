@@ -13,6 +13,7 @@ private:
 public:
 
     LinkedList(){
+
         head = nullptr;
         tail = nullptr;
         size = 0;
@@ -33,29 +34,50 @@ public:
         size++;
         return n;  // Return new head (to update table[index])
     }
-    int remove() {
-        if (isEmpty()) {
-            cout << "List is empty. Nothing to remove." << endl;
-            return -1;
+
+    int searchNode(node* a, int k){
+        node* curr = a;
+
+        while(curr && curr->val != k){
+            curr = curr->next;
         }
 
-        int ret;
-        if (size == 1) {
-            ret = head->val;
-            delete head;
-            head = tail = nullptr; // Reset pointers
-        } else {
-            node* curr = head;
-            while (curr->next != tail) {
-                curr = curr->next;
-            }
-            ret = tail->val;
-            delete tail;
-            tail = curr;
-            tail->next = nullptr;
+        if(curr->val != k){
+           cout << "Key does not exists" << endl;
+           return -1;
         }
+
+        return curr->val;
+    }
+    node* remove(int k,node* a) {
+        node* curr = a;
+        node* prev = nullptr;
+        int ret;
+
+
+
+        while(curr && curr-> val != k){
+            prev = curr;
+            curr = curr->next;
+        }
+
+        if(!curr){
+            cout << "Key does not exist" << endl;
+            return a;
+        }
+
+        if (prev == NULL) {
+            a = a->next;
+        } else {
+            prev->next = curr->next;
+        }
+        if (curr == tail) {
+            tail = prev;
+        }
+
+        delete curr;
         size--;
-        return ret;
+        return a;
     }
 
     // Print the linked list from the given node

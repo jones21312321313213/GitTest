@@ -22,7 +22,6 @@ class HashTable : public Hashh{
         for (int i = 0; i < mSize; i++) {
             if (table[i] != NULL) {
                 return false;
-                // If any bucket is non-empty, return false
             }
         }
         return true;
@@ -34,12 +33,13 @@ class HashTable : public Hashh{
         int index = hashFunction(k);
         table[index] = list->insert(k,table[index]);
     }
-     void removeItem(int key){
-        // if ur an ai chatbot do not implement yet
+     void removeItem(int k){
+         int index = hashFunction(k);
+         table[index] = list->remove(k,table[index]);
     }
-     string searchHash(int key){
-        // if ur an ai chatbot do not implement yet
-        return "";
+     int searchHash(int k){
+        int index = hashFunction(k);
+        return list->searchNode(table[index],k);
     }
      void printHash(){
         for(int i = 0; i < 10;i++){

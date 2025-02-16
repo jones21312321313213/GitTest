@@ -5,8 +5,9 @@ class List{
     virtual bool isEmpty() = 0;
     virtual int getSize() = 0;
     virtual node* insert(int e,node* a) = 0;
-    virtual int remove() = 0;
+    virtual node* remove(int k,node* a) = 0;
     virtual void print(node* a) = 0;
+    virtual int searchNode(node* a,int k) = 0;
 };
 
 #endif

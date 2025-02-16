@@ -1,7 +1,8 @@
 #include "node.h"
 #include <iostream>
 #include "list.h"
-
+#include <string>
+#include <utility>
 using namespace std;
 
 class LinkedList : public List {
@@ -13,7 +14,6 @@ private:
 public:
 
     LinkedList(){
-
         head = nullptr;
         tail = nullptr;
         size = 0;
@@ -27,7 +27,7 @@ public:
         return size;
     }
 
-    node* insert(int e, node* head) {
+    node* insert(pair<int,string> e, node* head) {
         node* n = new node();
         n->val = e;
         n->next = head;  // New node points to the old head
@@ -35,19 +35,19 @@ public:
         return n;  // Return new head (to update table[index])
     }
 
-    int searchNode(node* a, int k){
+    string searchNode(node* a, int k){
         node* curr = a;
 
-        while(curr && curr->val != k){
+        while(curr && curr->val.first != k){
             curr = curr->next;
         }
 
-        if(curr->val != k){
+        if(curr->val.first != k){
            cout << "Key does not exists" << endl;
-           return -1;
+           return "";
         }
 
-        return curr->val;
+        return curr->val.second;
     }
     node* remove(int k,node* a) {
         node* curr = a;
@@ -56,7 +56,7 @@ public:
 
 
 
-        while(curr && curr-> val != k){
+        while(curr && curr->val.first != k){
             prev = curr;
             curr = curr->next;
         }
@@ -89,7 +89,7 @@ public:
 
         node* curr = a;
         while (curr) {
-            cout << curr->val << " -> ";
+            cout << "("<<curr->val.first << ", " << curr->val.second << ")" << " -> ";
             curr = curr->next;
         }
         cout << "NULL" << endl;

@@ -3,15 +3,15 @@
 #include "h.h"
 using namespace std;
 
-class HashTable : public Hashh{
-    List* list;
-    node* table[10];
+class HashTable : public Hashh {
+    List* list = new LinkedList();
+    node* table[10];  // Array of linked list nodes
     int mSize;
     int sizee;
-    public:
-    HashTable(){
-        list = new LinkedList();
-        for(int i = 0; i < 10;i++){
+
+public:
+    HashTable() {
+        for (int i = 0; i < 10; i++) {
             table[i] = NULL;
         }
         mSize = 10;
@@ -26,23 +26,28 @@ class HashTable : public Hashh{
         }
         return true;
     }
-     int hashFunction(int k){
+
+    int hashFunction(int k) {
         return k % mSize;
     }
-     void insertHash(int k){
+
+    void insertHash(int k, string value) {
         int index = hashFunction(k);
-        table[index] = list->insert(k,table[index]);
+        table[index] = list->insert(make_pair(k, value), table[index]);
     }
-     void removeItem(int k){
-         int index = hashFunction(k);
-         table[index] = list->remove(k,table[index]);
-    }
-     int searchHash(int k){
+
+    void removeItem(int k) {
         int index = hashFunction(k);
-        return list->searchNode(table[index],k);
+        table[index] = list->remove(k, table[index]);
     }
-     void printHash(){
-        for(int i = 0; i < 10;i++){
+
+    string searchHash(int k) {
+        int index = hashFunction(k);
+        return list->searchNode(table[index], k);
+    }
+
+    void printHash() {
+        for (int i = 0; i < 10; i++) {
             cout << "Index " << i << ": ";
             node* temp = table[i];
             list->print(temp);

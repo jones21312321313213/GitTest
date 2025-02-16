@@ -1,5 +1,7 @@
-
+#include <string>
+#include <utility>
+using namespace std;
 struct node{
-    int val;
+    pair<int, string> val;
     node* next;
 };

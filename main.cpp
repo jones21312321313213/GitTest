@@ -2,47 +2,59 @@
 #include "hash.h"
 using namespace std;
 
-int main()
-{
+int main() {
     Hashh* ht = new HashTable();
-    int num;
+    int key;
+    string value;
     char a;
-    do{
-        cout << "a for add, r for remove,p for print and x to exit program: ";
+
+    do {
+        cout << "a for add, r for remove, p for print, s for search, e for isEmpty, and x to exit program: ";
         cin >> a;
 
-        switch(a){
-        case 'a':{
-            cout << "Enter a number: ";
-            cin >> num;
-            ht->insertHash(num);
-            break;
+        switch (a) {
+            case 'a': {
+                cout << "Enter a key (integer): ";
+                cin >> key;
+                cout << "Enter a value (string): ";
+                cin >> value;
+                ht->insertHash(key, value);
+                break;
             }
-        case 'r':{
-            cout << "Enter key to remove: ";
-            cin >> num;
-            ht->removeItem(num);
-            break;
+            case 'r': {
+                cout << "Enter key to remove: ";
+                cin >> key;
+                ht->removeItem(key);
+                break;
             }
-        case 'p':{
-            ht->printHash();
-            break;
+            case 'p': {
+                ht->printHash();
+                break;
             }
-        case 's':{
-            cout << "Enter number to search: ";
-            cin >> num;
-            cout << "Value: " << ht->searchHash(num) << " Found in table" << endl;
-            break;
+            case 's': {
+                cout << "Enter key to search: ";
+                cin >> key;
+                string result = ht->searchHash(key);
+                if (result != "") {
+                    cout << "Key: " << key << ", Value: " << result << " found in table." << endl;
+                } else {
+                    cout << "Key not found." << endl;
+                }
+                break;
+            }
+            case 'e': {
+                cout << (ht->isEmpty2() ? "True" : "False") << endl;
+                break;
+            }
+            case 'x': {
+                cout << "Thank you for using the program." << endl;
+                break;
+            }
+            default: {
+                cout << "Invalid input, try again!" << endl;
+            }
         }
-        case 'x':{
-            cout << "Thank you for using the program";
-            break;
-            }
-        }
-    }while(a != 'x');
-    string b = ht->isEmpty2() ? "True" : "False";
-    cout << b << endl;
+    } while (a != 'x');
 
-    //cout << "Hello world!" << endl;
     return 0;
 }

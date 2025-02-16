@@ -1,5 +1,6 @@
 #include <iostream>
 #include "hash.h"
+#include <random>
 using namespace std;
 
 int main() {
@@ -7,6 +8,9 @@ int main() {
     int key;
     string value;
     char a;
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<int> dist(1,1000);
 
     do {
         cout << "a for add, r for remove, p for print, s for search, e for isEmpty, and x to exit program: ";
@@ -14,11 +18,14 @@ int main() {
 
         switch (a) {
             case 'a': {
-                cout << "Enter a key (integer): ";
-                cin >> key;
+
                 cout << "Enter a value (string): ";
                 cin >> value;
-                ht->insertHash(key, value);
+                int randomKey = dist(gen);
+                /*cout << "Enter a key (integer): ";
+                cin >> key;*/
+
+                ht->insertHash(randomKey, value);
                 break;
             }
             case 'r': {
@@ -37,8 +44,6 @@ int main() {
                 string result = ht->searchHash(key);
                 if (result != "") {
                     cout << "Key: " << key << ", Value: " << result << " found in table." << endl;
-                } else {
-                    cout << "Key not found." << endl;
                 }
                 break;
             }

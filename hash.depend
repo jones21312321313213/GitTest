@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1739717058 source:c:\users\zyla\codeblockscoddeess\hash\main.cpp
+	<iostream>
+	"hash.h"
+	<random>
+
+1739717029 c:\users\zyla\codeblockscoddeess\hash\linkedlist.h
+	"node.h"
+	<iostream>
+	"list.h"
+	<string>
+	<utility>
+
+1739715434 c:\users\zyla\codeblockscoddeess\hash\node.h
+	<string>
+	<utility>
+
+1739715964 c:\users\zyla\codeblockscoddeess\hash\list.h
+	<string>
+	<utility>
+
+1739715853 c:\users\zyla\codeblockscoddeess\hash\hash.h
+	"linkedList.h"
+	<iostream>
+	"h.h"
+
+1739715682 c:\users\zyla\codeblockscoddeess\hash\h.h
+

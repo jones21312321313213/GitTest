@@ -42,7 +42,7 @@ public:
             curr = curr->next;
         }
 
-        if(curr->val.first != k){
+        if(!curr){
            cout << "Key does not exists" << endl;
            return "";
         }
